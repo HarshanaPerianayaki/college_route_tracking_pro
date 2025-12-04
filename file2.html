@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <nav>
+        <img src="imgii.jpeg" alt="logo"width="100vw"height="20vh">
+    </nav>
+
+    <style>
+        body {
+            background-color:white;
+            background-image: url('imge1.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        
+        .box, .box-alt {
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #8a94e1;
+            box-shadow: 4px 0 2px grey;
+            background-color: rgba(163, 173, 247, 0.8); /* Adjusted opacity for readability */
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .box, .box-alt {
+                width: 90%;
+                font-size: large;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <a href="#">Search by Departments</a>
+    </div>
+    <div class="box-alt">
+        <a href="#">Search by Events</a>
+    </div>
+</body>
+</html>

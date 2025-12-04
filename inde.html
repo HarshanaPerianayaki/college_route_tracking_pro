@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Navigation - St. Joseph's College</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+           background-image: url('./clg3.jpg');
+            margin: 0;
+            color: white;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: 279187;
+            padding: 15px 20px;
+            position: relative;
+        }
+
+        .navbar .logo {
+            color: rgb(255, 255, 255);
+            font-size: 2.3em;
+            font-weight: bold;
+            border-right: 20px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar ul li a:hover {
+            color: #193977;
+        }
+        .navbar {
+            background:black (255, 0, 0, 0.9);
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 45px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            display: inline-block;
+            font-size: 18px;
+            border-radius: 25px;
+            transition: 0.3s ease-in-out;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .navbar a:hover {
+            background-color: rgb(222, 125, 125);
+            transform: scale(1.1);
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 25px;
+            
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            color: black;
+            background: linear-gradient(135deg red(255,255,255,0.1), blue(255,255,255,0));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(32, 1, 1, 0.053);
+            box-shadow:0 8px 32px 0 rgba(0,0,0,0.37); ;
+        }
+        h1 {
+            color:rgb(255, 255, 255);
+        }
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            transition: 0.3s;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #ff0000, #ff3333);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            
+        }
+        button:hover {
+            background: linear-gradient(135deg, #430303,#ff3333, #430303);
+            transform: scale(1.1);
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="./Engg Logo1.png" alt="logo" width="80px" height="80px">
+        
+        <div class="logo">
+            
+            
+            St.Joseph's College of Engineering</div>
+        <ul>
+           
+            
+          
+            <li><a href="https://stjosephs.ac.in/index.html">Home</a></li>
+            <li><a href="https://www.google.com/maps/d/u/0/viewer?mid=1B_ityVBFyS8pKvRHmk_RXgrkaKGhSrY&femb=1&ll=12.869385460048226%2C80.21573995&z=16">Campus Map</a></li>
+            <li><a href="./sample.html">Events</a></li>
+       
+            <li><a href="./feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="elements">
+        <h2>Campus Navigation</h2>
+        <label for="searchType">Select Search Type:</label>
+        <select id="searchType" onchange="updateOptions()">
+            <option value="event">Event</option>
+            <option value="place">Place</option>
+        </select>
+        
+        <label for="destination">Select Destination:</label>
+        <select id="destination"></select>
+        
+        <button onclick="navigate()">Submit</button>
+        
+        <iframe id="mapFrame" src="https://www.google.com/maps/d/embed?mid=1B_ityVBFyS8pKvRHmk_RXgrkaKGhSrY" frameborder="0"></iframe>
+    </div>
+    </div>
+
+    <script>
+        const locations = {
+            event: [
+                {name: "Genetrix - CSE Department", latitude: 12.8696, longitude: 80.2202},
+                {name: "Infotrix - IT Department", latitude: 12.8698, longitude: 80.2205}
+            ],
+            place: [
+                {name: "Library", latitude: 12.86978, longitude: 80.21496},
+                {name: "Girls Veg Mess Hall", latitude: 12.86892, longitude: 80.21492},
+                {name: "Girls Hostel", latitude: 12.87163, longitude: 80.21486},
+                {name: "Trinity", latitude: 12.8714, longitude: 80.21576},
+                {name: "St. Joseph's Bus Depot", latitude: 12.8714, longitude: 80.21634},
+                {name: "Exam Block", latitude: 12.87079, longitude: 80.2165},
+                {name: "Department of Mechanical", latitude: 12.87004, longitude: 80.2169},
+                {name: "St Joseph's College Of Engineering", latitude: 12.86989, longitude: 80.21839},
+                {name: "Artificial Grounds", latitude: 12.86968, longitude: 80.21735},
+                {name: "Admin Block", latitude: 12.86942, longitude: 80.21678},
+                {name: "MGR Statue", latitude: 12.8696, longitude: 80.21578},
+                {name: "Innovation Center", latitude: 12.87011, longitude: 80.2171},
+                {name: "Department of EEE", latitude: 12.8703, longitude: 80.21546},
+                {name: "Indian Bank", latitude: 12.86846, longitude: 80.21515},
+                {name: "Indoor Auditorium Entrance", latitude: 12.8684, longitude: 80.21574},
+                {name: "Girls Non Veg Mess", latitude: 12.86833, longitude: 80.21627},
+                {name: "Basketball Ground", latitude: 12.86793, longitude: 80.21542},
+                {name: "Basketball Ground 2", latitude: 12.86766, longitude: 80.21658},
+                {name: "Mens Hostel", latitude: 12.86772, longitude: 80.21513}
+            ]
+        };
+
+        function updateOptions() {
+            const searchType = document.getElementById("searchType").value;
+            const destinationSelect = document.getElementById("destination");
+            destinationSelect.innerHTML = "";
+            
+            locations[searchType].forEach(loc => {
+                let option = document.createElement("option");
+                option.value = `${loc.latitude},${loc.longitude}`;
+                option.textContent = loc.name;
+                destinationSelect.appendChild(option);
+            });
+        }
+
+        function navigate() {
+            const destination = document.getElementById("destination").value;
+            const baseUrl = "https://www.google.com/maps/dir/?api=1&origin=12.869944,80.218403&destination=";
+            window.open(baseUrl + destination, "_blank");
+        }
+
+        updateOptions();
+    </script>
+</body>
+</html>
